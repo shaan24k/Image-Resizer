@@ -9,7 +9,7 @@ Run Server
 <div class="highlight highlight-source-shell"><pre>node app.js</pre></div>
 
 Resizer API
-<div class="highlight highlight-source-shell"><pre>
+<div class="highlight highlight-source-shell">
 
 <b>Request<b>
 
@@ -25,7 +25,7 @@ sizes = 127x128,500x300,1000x900  (resize image into diffrent sizes)
     "message": "Image resize with mode 1 successfully done."
 }
 
-</pre></div>
+</div>
 
 This will create folder name uploads and place original image into orginal folder and sub resize folders
 
