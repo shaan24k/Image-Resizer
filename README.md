@@ -28,3 +28,6 @@ sizes = 127x128,500x300,1000x900  (resize image into diffrent sizes)
 }
 
 </pre></div>
+
+This will create folder name uploads and place original image into orginal folder and sub resize folders
+
