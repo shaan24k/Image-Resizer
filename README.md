@@ -11,8 +11,8 @@ Run Server
 Resizer API
 <div class="highlight highlight-source-shell">
 
-<b>Request<b>
-
+<b>Request</b>
+<pre>
 BaseUrl = localhost:1000/api/auto_image_resizer
 Method : POST Form data
 
@@ -24,7 +24,7 @@ sizes = 127x128,500x300,1000x900  (resize image into diffrent sizes)
     "success": true,
     "message": "Image resize with mode 1 successfully done."
 }
-
+</pre>
 </div>
 
 This will create folder name uploads and place original image into orginal folder and sub resize folders
