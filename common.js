@@ -1,3 +1,5 @@
+var Jimp = require('jimp');
+
 module.exports = {
     failure_callback: function(res, data) {
 
@@ -44,6 +46,68 @@ module.exports = {
             return false;
 
         }
+
+    },
+
+    autoResizer: function(data) {
+
+        return new Promise((resolve, reject) => {
+
+            var sourceImage = data[0].trim(),
+                dstName = data[1].trim(),
+                destWidth = parseInt(data[2]),
+                destHeight = parseInt(data[3]),
+                resizeMode = parseInt(data[4]);
+
+            let destImageName = `./uploads/${dstName}`;
+
+            if (resizeMode == 1) {
+
+                Jimp.read(sourceImage)
+                    .then(img => {
+                        return img
+                            .cover(destWidth, destHeight)
+                            .write(`${destImageName}`); // save
+
+                    })
+                    .catch(err => {
+                        reject(err.message);
+                    });
+
+
+                resolve('Image resize with mode 1 successfully done.');
+
+            } else
+
+                Jimp.read(sourceImage, function(err, image1) {
+
+                image1.scaleToFit(destWidth, destHeight);
+
+                var newHight = image1.bitmap.height;
+                var newWidth = image1.bitmap.width;
+
+                var newHalfHeigt = newHight / 2;
+                var originalHalfHeight = destHeight / 2;
+                var newY = originalHalfHeight - newHalfHeigt;
+
+                var newHalfWidth = newWidth / 2;
+                var originalHalfWidth = destWidth / 2;
+                var newX = originalHalfWidth - newHalfWidth;
+
+                new Jimp(destWidth, destHeight, 0xffffffff, function(err, image) {
+                    image.opacity(0, function(err, image) {
+
+                        image.composite(image1, newX, newY);
+
+                        image.write(destImageName);
+                    });
+                });
+
+                resolve('Image resize with mode 2 successfully done.');
+
+            })
+
+        })
 
     }
 };
