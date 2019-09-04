@@ -1,6 +1,6 @@
 <b>Image Resizer</b>
 
-This Repository will demo how to reize the single image into multiple sizes.
+This Repository will demo how to re-size the single image into multiple sizes.
 
 Installation
 <div class="highlight highlight-source-shell"><pre>npm install</pre></div>
